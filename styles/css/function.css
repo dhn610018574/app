@@ -1,0 +1,122 @@
+body {
+  background-color: #F5F5F5;
+  margin: 0 auto;
+}
+.border-1px {
+  position: relative;
+}
+.border-1px:after {
+  position: absolute;
+  content: '';
+  top: -50%;
+  bottom: -50%;
+  left: -50%;
+  right: -50%;
+  -webkit-transform: scale(0.5);
+      -ms-transform: scale(0.5);
+          transform: scale(0.5);
+  border-bottom: 1px solid #f1f1f1;
+}
+.common {
+  padding-left: 0.39999rem;
+  padding-top: 0.39999rem;
+}
+.common .title {
+  font-size: 15px;
+  line-height: 15px;
+  color: #333333;
+  letter-spacing: 0;
+  position: relative;
+  padding-left: 0.346658rem;
+}
+[data-dpr='2'] .common .title {
+  font-size: 30px;
+}
+[data-dpr='3'] .common .title {
+  font-size: 45px;
+}
+[data-dpr='2'] .common .title {
+  line-height: 30px;
+}
+[data-dpr='3'] .common .title {
+  line-height: 45px;
+}
+.common .title:before {
+  width: 0.079998rem;
+  height: 0.39999rem;
+  background-color: #FB4F3B;
+  position: absolute;
+  left: 0;
+  content: '';
+}
+.arrow-right:after {
+  position: absolute;
+  content: '';
+  right: 0;
+  width: 0.159996rem;
+  height: 0.293326rem;
+  background: url(../../public/image/arrow.png) no-repeat;
+  background-size: cover;
+}
+.topBar {
+  height: 1.173304rem;
+  background-color: #fff;
+}
+.topBar img {
+  width: 0.53332rem;
+  height: 0.53332rem;
+}
+.topBar .return,
+.topBar .share {
+  padding-top: 0.293326rem;
+}
+.topBar .return {
+  padding-left: 0.39999rem;
+}
+.topBar .share {
+  padding-right: 0.453322rem;
+}
+.topBar .top-main {
+  padding-top: 0.213328rem;
+  margin: 0 0.986642rem 0 0.93331rem;
+}
+.topBar .top-main .top-title h1,
+.topBar .top-main .top-title h2 {
+  text-align: center;
+}
+.topBar .top-main .top-title h1 {
+  font-size: 15px;
+  color: #333;
+  font-family: 'PingFangSC-Regular', '宋体';
+  line-height: 15px;
+}
+[data-dpr='2'] .topBar .top-main .top-title h1 {
+  font-size: 30px;
+}
+[data-dpr='3'] .topBar .top-main .top-title h1 {
+  font-size: 45px;
+}
+[data-dpr='2'] .topBar .top-main .top-title h1 {
+  line-height: 30px;
+}
+[data-dpr='3'] .topBar .top-main .top-title h1 {
+  line-height: 45px;
+}
+.topBar .top-main .top-title h2 {
+  font-size: 10px;
+  color: #999;
+  line-height: 10px;
+  margin-top: 0.079998rem;
+}
+[data-dpr='2'] .topBar .top-main .top-title h2 {
+  font-size: 20px;
+}
+[data-dpr='3'] .topBar .top-main .top-title h2 {
+  font-size: 30px;
+}
+[data-dpr='2'] .topBar .top-main .top-title h2 {
+  line-height: 20px;
+}
+[data-dpr='3'] .topBar .top-main .top-title h2 {
+  line-height: 30px;
+}

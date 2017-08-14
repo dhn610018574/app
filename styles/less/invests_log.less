@@ -1,0 +1,79 @@
+@import 'function.less';
+
+.topBar {
+    .top-title {
+        text-align: center;
+        .fontSize(17px);
+        color: #333333;
+        letter-spacing: 0;
+        line-height: 88*@rem;
+        position: relative;
+        &:before {
+            width: 40*@rem;
+            height: 40*@rem;
+            content: '';
+            position: absolute;
+            background: url(../../public/image/ison.png) no-repeat;
+            background-size: cover;
+            top: 50%;
+            margin-top: -20*@rem;
+            left: 34*@rem;
+        }
+    }
+}
+
+.users {
+    height: 66*@rem;
+    line-height: 66*@rem;
+    .fontSize(13px);
+    text-align: center;
+    color: #999;
+    strong {
+        padding: 0 10*@rem;
+        color: #FE805D;
+    }
+}
+
+.concat-list {
+    background-color: #fff;
+    padding-left: 30*@rem;
+    li {
+        padding: 30*@rem 30*@rem 30*@rem 0;
+        border-bottom: 1px solid #F2F2F2;
+        position: relative;
+    }
+    p {
+        margin-left: 148*@rem;
+        margin-right: 140*@rem;
+    }
+    img {
+        width: 88*@rem;
+        height: 88*@rem;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -44*@rem;
+    }
+    h3 {
+        color: #333;
+        position: absolute;
+        right: 30*@rem;
+        top: 50%;
+        transform: translateY(-50%);
+        .fontSize(15px);
+    }
+    span {
+        display: block;
+        &.tel {
+            margin-bottom: 30*@rem;
+            .fontSize(15px);
+            .lineHeight(15px);
+            color: #333;
+        }
+        &.date {
+            .fontSize(12px);
+            .lineHeight(12px);
+            color: #999;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+@import 'common.less';
+.content{
+    padding: 30*@rem;
+    background-color: #fff;
+    .text{
+        .left{
+            width: 44*@rem;
+            height: 42*@rem;
+            
+        }
+        .right{
+            margin-left: 74*@rem;
+            p{
+                .fontSize(12px);
+                color: #333;
+                letter-spacing: 0;
+                line-height: 30*@rem;
+                margin-bottom: 30*@rem;
+                &:nth-child(2){
+                    color: #999;
+                    letter-spacing: 0;
+                    line-height: 34*@rem;
+                }
+            }
+        }
+    }
+}
