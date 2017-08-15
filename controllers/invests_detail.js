@@ -3,11 +3,11 @@
   // 获取渲染数据
   getData();
   //下拉刷新
-  // srcollBar('#wrapper');
+  // srcollBar('.scroll');
   // 遮罩层逻辑
-  model();
+  // modal();
 
- //获取渲染数据
+  //获取渲染数据
   function getData() {
     var productUid = 1019;
     $.ajax({
@@ -36,16 +36,16 @@
       }
     });
   }
-  //获取页面上移的距离  
-  function getScrollTop() {
-    var scrollTop = 0;
-    if (document.documentElement && document.documentElement.scrollTop) {
-      scrollTop = document.documentElement.scrollTop;
-    } else if (document.body) {
-      scrollTop = document.body.scrollTop;
-    }
-    return scrollTop;
-  }
+  // //获取页面上移的距离  
+  // function getScrollTop() {
+  //   var scrollTop = 0;
+  //   if (document.documentElement && document.documentElement.scrollTop) {
+  //     scrollTop = document.documentElement.scrollTop;
+  //   } else if (document.body) {
+  //     scrollTop = document.body.scrollTop;
+  //   }
+  //   return scrollTop;
+  // }
   //js转换时间戳
   function getDate(inputTime, style) {
     var date = new Date(inputTime);
@@ -60,104 +60,64 @@
   //下拉刷新
   function srcollBar(ele) {
 
-    // 外围大盒子
-    var infoWrap = document.querySelector(ele);
-    //　火车头
-    var scrollCar = infoWrap.querySelector('.scroll');
+    var userList = document.querySelector(ele);
+    // 开始滑动的坐标
+    var startX, startY;
+    // 移动过程改变的坐标
+    var moveX, moveY;
+    // 滑动结束的坐标
+    var endX, endY;
+    // ul开始滑动的相对坐标
+    var x, y = 0;
 
-    var startY = 0; // 记录滑动开始的值
-    var centerY = 0;
+    userList.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      userList.style.transition = 'none';
+    });
 
-    var downMax = 100; // 下拉的最大值
-    // var upMax = -(scrollCar.offsetHeight - infoWrap.offsetHeight + downMax); // 上拉的最大值
-
-    // 向上的反弹值
-    var bounceUpMax = -(scrollCar.offsetHeight - infoWrap.offsetHeight);
-
-    // 这句话一定要放在事件的前面
-    if (test()) {
-      return;
-    }
-
-    // 绑定touch事件
-    scrollCar.addEventListener('touchstart', touchstartHandler);
-    scrollCar.addEventListener('touchmove', touchmoveHandler);
-    scrollCar.addEventListener('touchend', touchendHandler);
-
-    function touchstartHandler(e) {
-
-      // 开始的手指落点
-      startY = e.changedTouches[0].clientY;
-    };
-
-    function touchmoveHandler(e) {
-
-      // 清除过渡
-      scrollCar.style.transition = null;
-
-      // 滑动的距离
-      var dy = e.changedTouches[0].clientY - startY;
-
-      var tempY = centerY + dy;
-
-      // 在move里面判断，当滑动到一定的值的时候就不允许在往上或者往下滑动
-      if (tempY >= downMax) {
-        tempY = downMax;
-      // } else if (tempY <= upMax) {
-        // tempY = upMax;
+    userList.addEventListener('touchmove', function (e) {
+      moveX = e.touches[0].clientX;
+      moveY = e.touches[0].clientY;
+      y = moveY - startY;
+      if (y > 0 && y <= 200) {
+        userList.style.transform = "translateY(" + y + "px)";
       }
-      scrollCar.style.transform = 'translateY(' + tempY + 'px)';
-    };
+    });
 
-    function touchendHandler(e) {
-
-      var dy = e.changedTouches[0].clientY - startY;
-      // 将最终的位置赋值给centerY 以便下一次移动的时候基于上一次的位置在滑动
-      centerY += dy;
-
-      // 反弹的逻辑
-      if (centerY > 0) {
-        // 同步centerY 为了move的时候基于这个值
-        centerY = 0;
-        scrollCar.style.transition = 'transform .5s';
-        scrollCar.style.transform = 'translateY(' + centerY + 'px)';
-      } else if (centerY < bounceUpMax) {
-        // 同步centerY 为了move的时候基于这个值
-        centerY = bounceUpMax;
-        scrollCar.style.transition = 'transform .5s';
-        scrollCar.style.transform = 'translateY(' + centerY + 'px)';
-      }
-    };
-
-    function test() {
-      return scrollCar.offsetHeight <= infoWrap.offsetHeight
-    }
+    userList.addEventListener('touchend', function (e) {
+      endX = e.changedTouches[0].clientX;
+      endY = e.changedTouches[0].clientY;
+      userList.style.transition = 'all 0.5s';
+      userList.style.transform = "translateY(0px)";
+    });
+    getData();
   }
 
-  function model(){
-    var modal = document.querySelector('.modal');
-    modal.style.height = window.innerHeight + 'px';
+  // function modal() {
+  //   var modal = document.querySelector('.modal');
+  //   modal.style.height = window.innerHeight + 'px';
 
-    // 注册单击事件
-    var btn = document.querySelector("#alert");
+  //   // 注册单击事件
+  //   var btn = document.querySelector("#alert");
 
-    btn.addEventListener('click', function (e) {
-        modal.style.display="block";
-        e.preventDefault();
-    });
-    // 关闭弹窗
-    var close = document.querySelector('#close');
-    close.addEventListener('click', function (e) {
-        modal.style.display="none";
-    });
+  //   btn.addEventListener('click', function (e) {
+  //     modal.style.display = "block";
+  //     e.preventDefault();
+  //   });
+  //   // 关闭弹窗
+  //   var close = document.querySelector('#close');
+  //   close.addEventListener('click', function (e) {
+  //     modal.style.display = "none";
+  //   });
 
-    // checkbox背景更换
-    var checkbox = document.querySelector('.checkbox');
-    var flag = true;
-    checkbox.addEventListener('click', function (e) {
-        this.style.backgroundImage = flag ? 'url(../public/image/checked.png)' : 'url(../public/image/uncheck.png)';
-        flag = !flag;
-    });
-  }
+  //   // checkbox背景更换
+  //   var checkbox = document.querySelector('.checkbox');
+  //   var flag = true;
+  //   checkbox.addEventListener('click', function (e) {
+  //     this.style.backgroundImage = flag ? 'url(../public/image/checked.png)' : 'url(../public/image/uncheck.png)';
+  //     flag = !flag;
+  //   });
+  // }
 
 }();
