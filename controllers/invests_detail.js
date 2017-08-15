@@ -4,6 +4,7 @@
   getData();
   //下拉刷新
   srcollBar('.scroll');
+
   //获取渲染数据
   function getData() {
     var productUid = GetQueryString('uuid');
@@ -28,7 +29,6 @@
           data.data.yInterestRate = (100 * data.data.yInterestRate + '').substr(0, 4);
           var tplStr = template('detail_tpl', data);
           $('.scroll').html(tplStr);
-          getUserData();
         }
       },
       error: function (data) {
@@ -37,6 +37,7 @@
         }
       }
     });
+    getUserData();
   }
   //js转换时间戳
   function getDate(inputTime, style) {
@@ -104,9 +105,8 @@
       endY = e.changedTouches[0].clientY;
       userList.style.transition = 'all 0.5s';
       userList.style.transform = "translateY(0px)";
-      getData();
     });
-    // getData();
+
   }
   //获取url参数
   function GetQueryString(name) {

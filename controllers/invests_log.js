@@ -24,7 +24,7 @@
                     console.log(data.message);
                 }
             }
-        })
+        });
     }
     // 下拉刷新
     function upDown() {
@@ -57,8 +57,7 @@
             endX = e.changedTouches[0].clientX;
             endY = e.changedTouches[0].clientY;
             userList.style.transition = 'all 0.5s';
-            userList.style.transform = "translateY(0px)";
-            getData();            
+            userList.style.transform = "translateY(0px)";           
         });
     }
 
