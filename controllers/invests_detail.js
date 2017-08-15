@@ -6,12 +6,6 @@
   srcollBar('.scroll');
   //获取渲染数据
   function getData() {
-    //获取url参数
-    function GetQueryString(name) {
-      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-      var r = window.location.search.substr(1).match(reg);
-      if (r != null) return unescape(r[2]); return null;
-    }
     var productUid = GetQueryString('uuid');
     console.log(productUid);
     $.ajax({
@@ -30,11 +24,11 @@
           data.data.endTime = getDate(data.data.endTime, "-");
           data.data.pTime = getDate(data.data.pTime, "-");
           data.data.saleTime = getDate(data.data.saleTime, "-");
-          data.data.progress = parseInt(data.data.finishAmount / data.data.planAmount*100);
-          data.data.yInterestRate = (100*data.data.yInterestRate + '').substr(0,4);
+          data.data.progress = parseInt(data.data.finishAmount / data.data.planAmount * 100);
+          data.data.yInterestRate = (100 * data.data.yInterestRate + '').substr(0, 4);
           var tplStr = template('detail_tpl', data);
           $('.scroll').html(tplStr);
-          // getUserData();
+          getUserData();
         }
       },
       error: function (data) {
@@ -55,7 +49,7 @@
     var s = date.getSeconds();
     return Y + M + D;
   }
-
+  // 获取用户信息
   function getUserData() {
     $.ajax({
       url: '/webp2p_interface_mysql/investment/product/record?contractPrefix=F3M-1-&pageNumber=0&pageSize=5',
@@ -63,9 +57,9 @@
       dataType: 'json',
       data: {},
       success: function (data) {
-        console.log(data.data.count);
+        // console.log(data.lsirr[1].headImgUrl);
         if (data.result === '0000') {
-          var invest_userStr = template('user_tpl', data.data);
+          var invest_userStr = template('user_tpl', data);
           $('.con-icon').html(invest_userStr);
         }
       },
@@ -110,10 +104,15 @@
       endY = e.changedTouches[0].clientY;
       userList.style.transition = 'all 0.5s';
       userList.style.transform = "translateY(0px)";
+      getData();
     });
-    getData();
+    // getData();
   }
-
-
+  //获取url参数
+  function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+  }
 
 }();

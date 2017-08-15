@@ -16,10 +16,9 @@
       <!-- 模板的坑 -->
     </div>
   </div>
-  <!-- <footer id="alert"> <a href="javascript:;">马上投资</a></footer> -->
 
   <script src="../public/assets/jquery.min.js"></script>
-  <script src="../public/assets/artTemplate/template-web.js"></script>   
+  <script src="../public/assets/artTemplate/template-web.js"></script>
   <script src="../controllers/invests_detail.js"></script>
   <!-- 模板  -->
   <script type="text/template" id="detail_tpl">
@@ -59,11 +58,11 @@
         </div>
       </div>
       <div class="con-icon">
-        <a href="./invests_log.html">
+        <!-- <a href="./invests_log.html">
           <div class="icon fl"><img src="../public/image/photo4.png" alt="" /><img src="../public/image/photo3.png" alt="" /><img src="../public/image/photo2.png"
               alt="" /><img src="../public/image/photo1.png" alt="" /></div>
           <div class="icon-title fl"><span>...</span><img src="../public/image/photo5.png" alt="" /><span>已有<em>53</em>人投资<img src="../public/image/arrow.png" alt=""/></span></div>
-        </a>
+        </a> -->
 
       </div>
     </section>
@@ -124,12 +123,12 @@
     <section class="select-item menu">
       <div class="item">
         <ul>
-          <li class="border-1px">
+          <li>
             <a href="./invests_feature.html">
               <h3 class="arrow-right">产品详情</h3>
             </a>
           </li>
-          <li class="border-1px">
+          <li>
             <a href="./invests_feature_loan.html">
               <h3 class="arrow-right">产品特色</h3>
             </a>
@@ -144,6 +143,14 @@
     </section>
     <section class="footer">--资金由恒丰银行存管--</section>
 
+  </script>
+
+  <script type="text/template" id="user_tpl">
+    <a href="./invests_log.html">
+      <div class="icon fl"><img src="{{ data.lsirr[0].headImgUrl }}" alt="" /><img src="{{ data.lsirr[1].headImgUrl }}" alt="" /><img src="{{ data.lsirr[2].headImgUrl }}"
+          alt="" /><img src="{{ data.lsirr[3].headImgUrl }}" alt="" /></div>
+      <div class="icon-title fl"><span>...</span><img src="{{ data.lsirr[4].headImgUrl }}" alt="" /><span>已有<em>{{ data.count }}</em>人投资<img src="../public/image/arrow.png" alt=""/></span></div>
+    </a>
   </script>
 
 </body>
