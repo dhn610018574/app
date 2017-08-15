@@ -291,11 +291,10 @@
   margin-top: 0.13333rem;
   position: relative;
 }
-.content .con-invest .con-progress .progress:after {
+.content .con-invest .con-progress .progress .success-progress {
   position: absolute;
   height: 0.106664rem;
   border-radius: 0.106664rem;
-  width: 2.6666rem;
   right: 0;
   background-image: -webkit-linear-gradient(270deg, #fcb88a 0%, #ff6a5a 100%);
   background-image: linear-gradient(-180deg, #fcb88a 0%, #ff6a5a 100%);
@@ -457,8 +456,14 @@
   width: 0.293326rem;
   height: 0.293326rem;
   display: inline-block;
+  vertical-align: middle;
 }
-.select-item h3 {
+.select-item h3.safe {
+  display: inline-block;
+  vertical-align: middle;
+}
+.select-item h3,
+.select-item h3.safe {
   padding-top: 0.39999rem;
   position: relative;
   margin-bottom: 0.26666rem;
@@ -467,19 +472,24 @@
   letter-spacing: 0;
   line-height: 12px;
 }
-[data-dpr='2'] .select-item h3 {
+[data-dpr='2'] .select-item h3,
+[data-dpr='2'] .select-item h3.safe {
   font-size: 24px;
 }
-[data-dpr='3'] .select-item h3 {
+[data-dpr='3'] .select-item h3,
+[data-dpr='3'] .select-item h3.safe {
   font-size: 36px;
 }
-[data-dpr='2'] .select-item h3 {
+[data-dpr='2'] .select-item h3,
+[data-dpr='2'] .select-item h3.safe {
   line-height: 24px;
 }
-[data-dpr='3'] .select-item h3 {
+[data-dpr='3'] .select-item h3,
+[data-dpr='3'] .select-item h3.safe {
   line-height: 36px;
 }
-.select-item h3:before {
+.select-item h3:before,
+.select-item h3.safe:before {
   content: '';
   position: absolute;
   left: -0.639984rem;

@@ -3,30 +3,38 @@
   // 获取渲染数据
   getData();
   //下拉刷新
-  // srcollBar('.scroll');
-  // 遮罩层逻辑
-  // modal();
-
+  srcollBar('.scroll');
   //获取渲染数据
   function getData() {
-    var productUid = 1019;
+    //获取url参数
+    function GetQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return unescape(r[2]); return null;
+    }
+    var productUid = GetQueryString('uuid');
+    console.log(productUid);
     $.ajax({
       url: '/webp2p_interface_mysql/investment/product/' + productUid + '/detail',
       type: 'get',
       dataType: 'json',
       data: {},
       success: function (data) {
+        console.log(data);
         if (data.result === '0000') {
           //成功
-          console.log(data);
+          console.log(data.data.tipsStart);
           data.data.closeTime = getDate(data.data.closeTime, "-");
           data.data.pTime = data.data.saleTime + 86400000;
           data.data.endTime = data.data.pTime + data.data.freezePeriod * 86400000;
           data.data.endTime = getDate(data.data.endTime, "-");
           data.data.pTime = getDate(data.data.pTime, "-");
           data.data.saleTime = getDate(data.data.saleTime, "-");
+          data.data.progress = parseInt(data.data.finishAmount / data.data.planAmount*100);
+          data.data.yInterestRate = (100*data.data.yInterestRate + '').substr(0,4);
           var tplStr = template('detail_tpl', data);
           $('.scroll').html(tplStr);
+          // getUserData();
         }
       },
       error: function (data) {
@@ -36,16 +44,6 @@
       }
     });
   }
-  // //获取页面上移的距离  
-  // function getScrollTop() {
-  //   var scrollTop = 0;
-  //   if (document.documentElement && document.documentElement.scrollTop) {
-  //     scrollTop = document.documentElement.scrollTop;
-  //   } else if (document.body) {
-  //     scrollTop = document.body.scrollTop;
-  //   }
-  //   return scrollTop;
-  // }
   //js转换时间戳
   function getDate(inputTime, style) {
     var date = new Date(inputTime);
@@ -56,6 +54,28 @@
     var m = date.getMinutes() + ':';
     var s = date.getSeconds();
     return Y + M + D;
+  }
+
+  function getUserData() {
+    $.ajax({
+      url: '/webp2p_interface_mysql/investment/product/record?contractPrefix=F3M-1-&pageNumber=0&pageSize=5',
+      type: 'get',
+      dataType: 'json',
+      data: {},
+      success: function (data) {
+        console.log(data.data.count);
+        if (data.result === '0000') {
+          var invest_userStr = template('user_tpl', data.data);
+          $('.con-icon').html(invest_userStr);
+        }
+      },
+      error: function (data) {
+        if (data.result === 'FAPP_1111') {
+          console.log(data.message);
+        }
+      }
+    })
+
   }
   //下拉刷新
   function srcollBar(ele) {
@@ -94,30 +114,6 @@
     getData();
   }
 
-  // function modal() {
-  //   var modal = document.querySelector('.modal');
-  //   modal.style.height = window.innerHeight + 'px';
 
-  //   // 注册单击事件
-  //   var btn = document.querySelector("#alert");
-
-  //   btn.addEventListener('click', function (e) {
-  //     modal.style.display = "block";
-  //     e.preventDefault();
-  //   });
-  //   // 关闭弹窗
-  //   var close = document.querySelector('#close');
-  //   close.addEventListener('click', function (e) {
-  //     modal.style.display = "none";
-  //   });
-
-  //   // checkbox背景更换
-  //   var checkbox = document.querySelector('.checkbox');
-  //   var flag = true;
-  //   checkbox.addEventListener('click', function (e) {
-  //     this.style.backgroundImage = flag ? 'url(../public/image/checked.png)' : 'url(../public/image/uncheck.png)';
-  //     flag = !flag;
-  //   });
-  // }
 
 }();
