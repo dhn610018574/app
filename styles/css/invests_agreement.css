@@ -96,7 +96,7 @@ body {
   margin-bottom: 0.426656rem;
 }
 .protocol .protocol-title {
-  font-family: PingFangSC-Regular;
+  font-family: 'PingFangSC-Regular';
   font-size: 13px;
   color: #333;
   letter-spacing: 0;
@@ -111,9 +111,10 @@ body {
 }
 .protocol .protocol-number {
   font-size: 10px;
-  color: #999999;
+  color: #999;
   letter-spacing: 0;
   line-height: 0.26666rem;
+  font-family: 'PingFangSC-Regular';
 }
 [data-dpr='2'] .protocol .protocol-number {
   font-size: 20px;
@@ -130,6 +131,7 @@ body {
 }
 .party p {
   font-size: 15px;
+  font-family: 'PingFangSC-Regular';
   color: #666;
   letter-spacing: 0;
   line-height: 0.39999rem;
