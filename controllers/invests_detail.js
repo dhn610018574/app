@@ -3,7 +3,7 @@
   // 获取渲染数据
   getData();
   //下拉刷新
-  srcollBar('.scroll');
+  dropDown();
 
   //获取渲染数据
   function getData() {
@@ -73,9 +73,10 @@
 
   }
   //下拉刷新
-  function srcollBar(ele) {
 
-    var userList = document.querySelector(ele);
+  function dropDown() {
+    var concatList = document.querySelector('#wrapper');    
+    var userList = document.querySelector('.scroll');
     // 开始滑动的坐标
     var startX, startY;
     // 移动过程改变的坐标
@@ -84,30 +85,34 @@
     var endX, endY;
     // ul开始滑动的相对坐标
     var x, y = 0;
-
-    userList.addEventListener('touchstart', function (e) {
+    var top = userList.offsetTop;
+    concatList.addEventListener('touchstart', function (e) {
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
       userList.style.transition = 'none';
     });
 
-    userList.addEventListener('touchmove', function (e) {
+    concatList.addEventListener('touchmove', function (e) {
       moveX = e.touches[0].clientX;
       moveY = e.touches[0].clientY;
       y = moveY - startY;
-      if (y > 0 && y <= 200) {
+      if (y > 0 && y <= 300) {
         userList.style.transform = "translateY(" + y + "px)";
       }
     });
 
-    userList.addEventListener('touchend', function (e) {
+    concatList.addEventListener('touchend', function (e) {
       endX = e.changedTouches[0].clientX;
       endY = e.changedTouches[0].clientY;
       userList.style.transition = 'all 0.5s';
       userList.style.transform = "translateY(0px)";
+      if (top > 60) {
+        console.log(111);
+        getData();
+      }
     });
-
   }
+
   //获取url参数
   function GetQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
