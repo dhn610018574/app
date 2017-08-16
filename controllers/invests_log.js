@@ -62,7 +62,7 @@
             endY = e.changedTouches[0].clientY;
             userList.style.transition = 'all 0.5s';
             userList.style.transform = "translateY(0px)";
-            if (top > 60 && y>100) {
+            if (top > 70 && y>100) {
                 getData();
             }
         });
