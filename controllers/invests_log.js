@@ -28,7 +28,7 @@
     }
     // 下拉刷新
     function dropDown() {
-        var concatList = document.querySelector('.concat-list');        
+        var concatList = document.querySelector('.concat-list');
         var userList = document.querySelector('#user-list');
         // 开始滑动的坐标
         var startX, startY;
@@ -38,7 +38,7 @@
         var endX, endY;
         // ul开始滑动的相对坐标
         var x, y = 0;
-        var top = userList.offsetTop;
+
         concatList.addEventListener('touchstart', function (e) {
             startX = e.touches[0].clientX;
             startY = e.touches[0].clientY;
@@ -49,21 +49,24 @@
             moveX = e.touches[0].clientX;
             moveY = e.touches[0].clientY;
             y = moveY - startY;
+            console.log(y);
             if (y > 0 && y <= 300) {
                 userList.style.transform = "translateY(" + y + "px)";
             }
         });
 
         concatList.addEventListener('touchend', function (e) {
+            var top = userList.offsetTop;
+            console.log(top);
             endX = e.changedTouches[0].clientX;
             endY = e.changedTouches[0].clientY;
             userList.style.transition = 'all 0.5s';
             userList.style.transform = "translateY(0px)";
-            if (top > 60) {
-                // console.log(111);
+            if (top > 60 && y>100) {
                 getData();
             }
         });
+
     }
 
     //js转换时间戳
