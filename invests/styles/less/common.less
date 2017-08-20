@@ -1,0 +1,90 @@
+.fontSize (@size) {
+    font-size: @size;
+    [data-dpr='2'] & {
+        font-size: 2 * @size;
+    }
+    [data-dpr='3'] & {
+        font-size: 3 * @size;
+    }
+}
+.lineHeight (@size) {
+     line-height: @size;
+    [data-dpr='2'] & {
+        line-height: 2 * @size;
+    }
+    [data-dpr='3'] & {
+        line-height: 3 * @size;
+    }
+}
+@remBase : 75;
+@rem: round(1 / @remBase, 6) * 1rem; 
+
+.border-1px {
+    position: relative;
+}
+.border-1px:after {
+    position: absolute;
+    content: '';
+    top: -50%;
+    bottom: -50%;
+    left: -50%;
+    right: -50%;
+    transform: scale(0.5);
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.common {
+    padding-left: 30*@rem;
+    padding-top: 30*@rem;
+    .title {
+        .fontSize(15px);
+        .lineHeight(15px);
+        color: #333333;
+        letter-spacing: 0;
+        position: relative;
+        padding-left: 26*@rem; 
+        &:before {
+            width: 6*@rem;
+            height: 30*@rem;
+            background-color: #FB4F3B;
+            position: absolute;
+            left: 0;
+            content: '';
+        }
+    }   
+}
+
+// 右侧箭头
+.arrow-right:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    width: 25*@rem;
+    height: 25*@rem;
+    background: url(../../public/image/more.png) no-repeat;
+    background-size: cover;
+}
+
+//其他页面公共头
+.topBar {
+    background-color: #fff;
+    .top-title {
+        text-align: center;
+        .fontSize(17px);
+        color: #333;
+        letter-spacing: 0;
+        line-height: 88*@rem;
+        position: relative;
+        &:before {
+            width: 40*@rem;
+            height: 40*@rem;
+            content: '';
+            position: absolute;
+            background: url(../../public/image/ison.png) no-repeat;
+            background-size: cover;
+            top: 50%;
+            margin-top: -20*@rem;
+            left: 34*@rem;
+        }
+    }
+}

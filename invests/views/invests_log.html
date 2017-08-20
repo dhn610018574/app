@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>投资记录</title>
+  <script src="../public/assets/lib/flexible/flexible_css.js"></script>
+  <script src="../public//assets/lib/flexible/flexible.js"></script>
+  <link href="../styles/css/base.css" rel="stylesheet" />
+  <link href="../styles/css/invests_log.css" rel="stylesheet" />
+</head>
+
+<body>
+  <section class="users">
+    <!-- <h2>共<strong></strong>位用户投资</h2> -->
+  </section>
+  <section class="concat-list">
+    <ul id="user-list">
+      <li class="clearfix">
+        <a href="javascript:;">
+          <p class="picture"><img src="" alt="" /></p>
+          <h3 class="fr money">元</h3>
+          <p class="tel-cen"><span class="tel"></span><span class="date"></span></p>
+        </a>
+      </li>
+      <li class="clearfix">
+        <a href="javascript:;">
+          <p class="picture"><img src="" alt="" /></p>
+          <h3 class="fr money">元</h3>
+          <p class="tel-cen"><span class="tel"></span><span class="date"></span></p>
+        </a>
+      </li>
+      <li class="clearfix">
+        <a href="javascript:;">
+          <p class="picture"><img src="" alt="" /></p>
+          <h3 class="fr money">元</h3>
+          <p class="tel-cen"><span class="tel"></span><span class="date"></span></p>
+        </a>
+      </li>
+      <li class="clearfix">
+        <a href="javascript:;">
+          <p class="picture"><img src="" alt="" /></p>
+          <h3 class="fr money">元</h3>
+          <p class="tel-cen"><span class="tel"></span><span class="date"></span></p>
+        </a>
+      </li>
+      <li class="clearfix">
+        <a href="javascript:;">
+          <p class="picture"><img src="" alt="" /></p>
+          <h3 class="fr money">元</h3>
+          <p class="tel-cen"><span class="tel"></span><span class="date"></span></p>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <script src="../public/assets/jquery.min.js"></script>
+  <script src="../public/assets/artTemplate/template-web.js"></script>
+  <script src="../../config/config.js"></script>
+  <script src="../controllers/invests_log.js"></script>
+  <script type="text/template" id="invests_log_tpl">
+    {{ each list as value index }}
+    <li class="clearfix">
+      <a href="javascript:;">
+        <p class="picture"><img src="{{ value.headImgUrl }}" alt="" /></p>
+        <h3 class="fr money">{{ value.lendAmount }}元</h3>
+        <p class="tel-cen"><span class="tel">{{ value.mobilePhone }}</span><span class="date">{{ value.investDate }}</span></p>
+      </a>
+    </li>
+    {{ /each }}
+  </script>
+</body>
+
+</html>

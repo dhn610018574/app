@@ -1,0 +1,214 @@
+.border-1px {
+  position: relative;
+}
+.border-1px:after {
+  position: absolute;
+  content: '';
+  top: -50%;
+  bottom: -50%;
+  left: -50%;
+  right: -50%;
+  -webkit-transform: scale(0.5);
+      -ms-transform: scale(0.5);
+          transform: scale(0.5);
+  border-bottom: 1px solid #f1f1f1;
+}
+.common {
+  padding-left: 0.39999rem;
+  padding-top: 0.39999rem;
+}
+.common .title {
+  font-size: 15px;
+  line-height: 15px;
+  color: #333333;
+  letter-spacing: 0;
+  position: relative;
+  padding-left: 0.346658rem;
+}
+[data-dpr='2'] .common .title {
+  font-size: 30px;
+}
+[data-dpr='3'] .common .title {
+  font-size: 45px;
+}
+[data-dpr='2'] .common .title {
+  line-height: 30px;
+}
+[data-dpr='3'] .common .title {
+  line-height: 45px;
+}
+.common .title:before {
+  width: 0.079998rem;
+  height: 0.39999rem;
+  background-color: #FB4F3B;
+  position: absolute;
+  left: 0;
+  content: '';
+}
+.arrow-right:after {
+  position: absolute;
+  content: '';
+  right: 0;
+  width: 0.333325rem;
+  height: 0.333325rem;
+  background: url(../../public/image/more.png) no-repeat;
+  background-size: cover;
+}
+.topBar {
+  background-color: #fff;
+}
+.topBar .top-title {
+  text-align: center;
+  font-size: 17px;
+  color: #333;
+  letter-spacing: 0;
+  line-height: 1.173304rem;
+  position: relative;
+}
+[data-dpr='2'] .topBar .top-title {
+  font-size: 34px;
+}
+[data-dpr='3'] .topBar .top-title {
+  font-size: 51px;
+}
+.topBar .top-title:before {
+  width: 0.53332rem;
+  height: 0.53332rem;
+  content: '';
+  position: absolute;
+  background: url(../../public/image/ison.png) no-repeat;
+  background-size: cover;
+  top: 50%;
+  margin-top: -0.26666rem;
+  left: 0.453322rem;
+}
+.top {
+  height: 4.693216rem;
+}
+.top .successed {
+  margin: 0.559986rem auto;
+}
+.top .successed p {
+  text-align: center;
+  font-size: 14px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 0.693316rem;
+}
+[data-dpr='2'] .top .successed p {
+  font-size: 28px;
+}
+[data-dpr='3'] .top .successed p {
+  font-size: 42px;
+}
+.top .successed p i {
+  font-size: 20px;
+  color: #FB4D3A;
+  letter-spacing: 0;
+}
+[data-dpr='2'] .top .successed p i {
+  font-size: 40px;
+}
+[data-dpr='3'] .top .successed p i {
+  font-size: 60px;
+}
+.top .detail {
+  background-image: -webkit-linear-gradient(180deg, #ff7945 0%, #fb4d3a 100%);
+  background-image: linear-gradient(-90deg, #ff7945 0%, #fb4d3a 100%);
+  border-radius: 2.6666rem;
+  width: 4.159896rem;
+  height: 1.013308rem;
+  line-height: 1.013308rem;
+  margin: 0 auto;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+[data-dpr='2'] .top .detail {
+  font-size: 32px;
+}
+[data-dpr='3'] .top .detail {
+  font-size: 48px;
+}
+.line {
+  height: 1.146638rem;
+  line-height: 1.146638rem;
+  background-color: #f5f5f5;
+  text-align: center;
+  color: #999999;
+  letter-spacing: 0;
+  font-size: 13px;
+}
+[data-dpr='2'] .line {
+  font-size: 26px;
+}
+[data-dpr='3'] .line {
+  font-size: 39px;
+}
+.line i {
+  color: #FB4D3A;
+}
+.userInfo {
+  padding-left: 0.39999rem;
+}
+.userInfo li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.53332rem 0.39999rem 0.39999rem 0;
+  box-sizing: border-box;
+}
+.userInfo li img {
+  width: 1.173304rem;
+  margin-right: 0.39999rem;
+}
+.userInfo li .usertel {
+  margin-right: 0.986642rem;
+}
+.userInfo li .usertel p {
+  font-size: 15px;
+  color: #333333;
+}
+[data-dpr='2'] .userInfo li .usertel p {
+  font-size: 30px;
+}
+[data-dpr='3'] .userInfo li .usertel p {
+  font-size: 45px;
+}
+.userInfo li .usertel p:nth-child(2) {
+  font-size: 12px;
+  color: #999;
+}
+[data-dpr='2'] .userInfo li .usertel p:nth-child(2) {
+  font-size: 24px;
+}
+[data-dpr='3'] .userInfo li .usertel p:nth-child(2) {
+  font-size: 36px;
+}
+.userInfo li .success {
+  font-size: 13px;
+  color: #FB4D3A;
+  padding-top: 0.293326rem;
+}
+[data-dpr='2'] .userInfo li .success {
+  font-size: 26px;
+}
+[data-dpr='3'] .userInfo li .success {
+  font-size: 39px;
+}
+.nouser img {
+  width: 3.59991rem;
+  height: 2.6666rem;
+  margin: 1.759956rem auto;
+}
+.nouser p {
+  font-size: 13px;
+  color: #999999;
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: -1.3333rem;
+}
+[data-dpr='2'] .nouser p {
+  font-size: 26px;
+}
+[data-dpr='3'] .nouser p {
+  font-size: 39px;
+}
